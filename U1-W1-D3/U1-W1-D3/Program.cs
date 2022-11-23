@@ -11,10 +11,6 @@ namespace U1_W1_D3
         static void Main(string[] args)
         {
             ContoCorrente persona = new ContoCorrente();
-            persona._ContoEsistente = false;
-
-
-
             int scelta = 0;
             do
             {
@@ -41,29 +37,30 @@ namespace U1_W1_D3
             {
                 Console.WriteLine("inserisci un numero");
             }
-            Console.ReadLine();
-            
-
-           
+            Console.ReadLine();  
         }
         public class ContoCorrente
         {
-            public double _Saldo
+            private double _saldo;
+            public double Saldo
             {
-                get { return _Saldo; }
-                set { _Saldo = value; }
+                get { return _saldo; }
+                set { _saldo = value; }
             }
-            public string _CognomeUtente
+            private string _CognomeUtente;
+            public string cognomeUtente
             {
                 get { return _CognomeUtente; }
                 set { _CognomeUtente = value; }
             }
-            public string _NomeUtente
+            private string _NomeUtente;
+            public string nomeUtente
             {
                 get { return _NomeUtente; }
                 set { _NomeUtente = value; }
             }
-            public bool _ContoEsistente 
+            private bool _ContoEsistente;
+            public bool contoEsistente 
             { 
                 get{ return _ContoEsistente; }
                 set { _ContoEsistente = value; } 
@@ -84,7 +81,7 @@ namespace U1_W1_D3
                 ContoCorrente conto = new ContoCorrente();
                 _CognomeUtente = Cognome;
                 _NomeUtente = Nome;
-                _Saldo = 0;
+                _saldo = 0;
                 _ContoEsistente = true;
                 Console.WriteLine($"Il conto corrente è stato creato a nome : {_CognomeUtente} {_NomeUtente}");
             }
@@ -99,15 +96,15 @@ namespace U1_W1_D3
                     Console.WriteLine("Inserisci l'importo del prelevamento da effettuare: ");
                     double importoPrelevato = double.Parse(Console.ReadLine());
 
-                    if (importoPrelevato > _Saldo)
+                    if (importoPrelevato > _saldo)
                     {
                         Console.WriteLine("Prelevamento non consentito!!!");
                     }
                     else
                     {
                         Console.WriteLine("Prelevamento effettuato");
-                        _Saldo -= importoPrelevato;
-                        Console.WriteLine($"Nuovo saldo del CC odierno: {_Saldo.ToString("N")}");
+                        _saldo -= importoPrelevato;
+                        Console.WriteLine($"Nuovo saldo del CC odierno: {_saldo.ToString("N")}");
                     }
                 }
                 
@@ -124,8 +121,8 @@ namespace U1_W1_D3
                     double importoVersato = double.Parse(Console.ReadLine());
 
                     Console.WriteLine("Versamento effettuato");
-                    _Saldo += importoVersato;
-                    Console.WriteLine($"Nuovo saldo del CC odierno: {_Saldo.ToString("N")}");
+                    _saldo += importoVersato;
+                    Console.WriteLine($"Nuovo saldo del CC odierno: {_saldo.ToString("N")}");
                 }
                 
             }
