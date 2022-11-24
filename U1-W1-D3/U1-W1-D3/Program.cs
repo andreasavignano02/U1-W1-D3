@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,33 +12,9 @@ namespace U1_W1_D3
         static void Main(string[] args)
         {
             ContoCorrente persona = new ContoCorrente();
-            int scelta = 0;
-            do
-            {
-                Console.WriteLine("Cosa vuoi fare ?");
-                Console.WriteLine("1. Aprire un conto");
-                Console.WriteLine("2. Fare un versamento");
-                Console.WriteLine("3. Fare un prelievo");
-                scelta = int.Parse(Console.ReadLine());
-            } while (scelta > 4);
+            persona.metodo();
 
-            if (scelta == 1)
-            {
-                persona.apriConto();
-            }
-            else if (scelta == 2)
-            {
-                persona.EffettuaVersamento();
-            }
-            else if (scelta == 3)
-            {
-                persona.EffettuaPrelevamento();
-            }
-            else 
-            {
-                Console.WriteLine("inserisci un numero");
-            }
-            Console.ReadLine();  
+          
         }
         public class ContoCorrente
         {
@@ -68,6 +45,38 @@ namespace U1_W1_D3
             public ContoCorrente() 
             { 
             
+            }
+            public void metodo()
+            {
+                int scelta = 0;
+                do
+                {
+                    Console.WriteLine("Cosa vuoi fare ?");
+                    Console.WriteLine("1. Aprire un conto");
+                    Console.WriteLine("2. Fare un versamento");
+                    Console.WriteLine("3. Fare un prelievo");
+                    scelta = int.Parse(Console.ReadLine());
+                } while (scelta > 4);
+                if (scelta == 1)
+                {
+                   apriConto();
+                    metodo();
+                }
+                else if (scelta == 2)
+                {
+                    EffettuaVersamento();
+                    metodo();
+                }
+                else if (scelta == 3)
+                {
+                    EffettuaPrelevamento();
+                    metodo();
+                }
+                else
+                {
+                    Console.WriteLine("inserisci un numero");
+                }
+                Console.ReadLine();
             }
 
             public void apriConto()
